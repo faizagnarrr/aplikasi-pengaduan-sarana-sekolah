@@ -96,29 +96,28 @@ class SiswaController extends Controller
     }
 
     public function statusPenyelesaian()
-    {
-        $siswa = Auth::guard('siswa')->user();
+{
+    $siswa = Auth::guard('siswa')->user();
 
-        $aspirasiList = Aspirasi::with(['kategori', 'inputAspirasi'])
-            ->where('siswa_id', $siswa->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+    $aspirasi = Aspirasi::with(['kategori', 'inputAspirasi'])
+        ->where('siswa_id', $siswa->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        return view('siswa.aspirasi.status', compact('aspirasiList'));
-    }
-
+    return view('siswa.aspirasi.status', compact('aspirasi'));
+}
     public function historiUser()
-    {
-        $siswa = Auth::guard('siswa')->user();
+{
+    $siswa = Auth::guard('siswa')->user();
 
-        $historiAspirasi = Aspirasi::with(['kategori', 'inputAspirasi'])
-            ->where('siswa_id', $siswa->id)
-            ->where('status', 'Selesai')
-            ->orderBy('updated_at', 'desc')
-            ->get();
+    $histori = Aspirasi::with(['kategori', 'inputAspirasi'])
+        ->where('siswa_id', $siswa->id)
+        ->where('status', 'Selesai')
+        ->orderBy('updated_at', 'desc')
+        ->get();
 
-        return view('siswa.aspirasi.histori', compact('historiAspirasi'));
-    }
+    return view('siswa.aspirasi.histori', compact('histori'));
+}
 
     public function viewFeedback()
     {
@@ -135,14 +134,14 @@ class SiswaController extends Controller
 
     public function progressPerbaikan()
     {
-        $siswa = Auth::guard('siswa')->user();
+    $siswa = Auth::guard('siswa')->user();
 
-        $aspirasiProgress = Aspirasi::with(['kategori', 'inputAspirasi'])
-            ->where('siswa_id', $siswa->id)
-            ->whereIn('status', ['Menunggu', 'Proses'])
-            ->orderBy('created_at', 'desc')
-            ->get();
+    $progress = Aspirasi::with(['kategori', 'inputAspirasi'])
+        ->where('siswa_id', $siswa->id)
+        ->whereIn('status', ['Menunggu', 'Proses'])
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        return view('siswa.aspirasi.progress', compact('aspirasiProgress'));
-    }
+    return view('siswa.aspirasi.progress', compact('progress'));
+}
 }

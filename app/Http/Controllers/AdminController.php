@@ -102,21 +102,22 @@ class AdminController extends Controller
 
     public function viewFeedback()
     {
-        $aspirasiWithFeedback = Aspirasi::with(['siswa', 'kategori', 'inputAspirasi'])
-            ->whereNotNull('feedback')
-            ->orderBy('updated_at', 'desc')
-            ->get();
+    $feedback = Aspirasi::with(['siswa', 'kategori', 'inputAspirasi'])
+        ->whereNotNull('feedback')
+        ->where('status', 'Selesai')
+        ->orderBy('updated_at', 'desc')
+        ->get();
 
-        return view('admin.feedback', compact('aspirasiWithFeedback'));
+     return view('admin.feedback', compact('feedback'));
     }
 
     public function histori()
-    {
-        $historiAspirasi = Aspirasi::with(['siswa', 'kategori', 'inputAspirasi'])
-            ->where('status', 'Selesai')
-            ->orderBy('updated_at', 'desc')
-            ->get();
+{
+    $histori = Aspirasi::with(['siswa', 'kategori', 'inputAspirasi'])
+        ->where('status', 'Selesai')
+        ->orderBy('updated_at', 'desc')
+        ->get();
 
-        return view('admin.histori', compact('historiAspirasi'));
-    }
+    return view('admin.histori', compact('histori'));
+}
 }
