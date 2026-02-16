@@ -14,6 +14,7 @@
                 <a href="{{ route('siswa.aspirasi.form') }}" class="px-4 py-2 rounded-lg hover:bg-white/20">➕ Ajukan Aspirasi</a>
                 <a href="{{ route('siswa.aspirasi.status') }}" class="px-4 py-2 rounded-lg hover:bg-white/20">📊 Status Aspirasi</a>
                 <a href="{{ route('siswa.aspirasi.histori') }}" class="px-4 py-2 rounded-lg hover:bg-white/20">📜 Histori</a>
+                <a href="{{ route('siswa.aspirasi.feedback') }}" class="px-4 py-2 rounded-lg hover:bg-white/20">💬 Umpan Balik</a>
                 <form action="{{ route('siswa.logout') }}" method="POST" class="inline">
                     @csrf
                     <button type="submit" class="px-4 py-2 rounded-lg border border-white bg-white/20 hover:bg-white/30">Logout</button>

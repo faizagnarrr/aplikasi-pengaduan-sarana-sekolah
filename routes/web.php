@@ -24,6 +24,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/feedback', [AdminController::class, 'viewFeedback'])->name('feedback');
     Route::get('/histori', [AdminController::class, 'histori'])->name('histori');
     Route::post('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
+    Route::post('/aspirasi/{id}/feedback', [AdminController::class, 'submitFeedback'])->name('aspirasi.submitFeedback');
 });
 
 // Siswa routes
@@ -34,6 +35,6 @@ Route::middleware(['auth:siswa'])->prefix('siswa')->name('siswa.')->group(functi
     Route::get('/aspirasi/status', [SiswaController::class, 'statusPenyelesaian'])->name('aspirasi.status');
     Route::get('/aspirasi/histori', [SiswaController::class, 'historiUser'])->name('aspirasi.histori');
     Route::get('/aspirasi/progress', [SiswaController::class, 'progressPerbaikan'])->name('aspirasi.progress');
-    Route::post('/aspirasi/{id}/feedback', [SiswaController::class, 'submitFeedback'])->name('aspirasi.feedback');
     Route::post('/logout', [AuthController::class, 'logoutSiswa'])->name('logout');
+    Route::get('/aspirasi/feedback', [SiswaController::class, 'viewFeedback'])->name('aspirasi.feedback');
 });

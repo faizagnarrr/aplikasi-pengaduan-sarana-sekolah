@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajukan Aspirasi</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    /* Fix dropdown z-index issue */
+    select {
+        appearance: auto !important;
+        -webkit-appearance: auto !important;
+        -moz-appearance: auto !important;
+    }
+    
+    /* Ensure dropdown can expand properly */
+    select option {
+        padding: 10px;
+    }
+</style>
 </head>
 <body class="bg-gray-50">
     <nav class="bg-gradient-to-r from-[#f093fb] to-[#f5576c] text-white shadow-lg">
@@ -80,5 +93,6 @@
             </form>
         </div>
     </div>
+    
 </body>
 </html>

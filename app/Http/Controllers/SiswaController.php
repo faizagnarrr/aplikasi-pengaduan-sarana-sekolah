@@ -119,18 +119,7 @@ class SiswaController extends Controller
     return view('siswa.aspirasi.histori', compact('histori'));
 }
 
-    public function viewFeedback()
-    {
-        $siswa = Auth::guard('siswa')->user();
-
-        $aspirasiWithFeedback = Aspirasi::with(['kategori', 'inputAspirasi'])
-            ->where('siswa_id', $siswa->id)
-            ->whereNotNull('feedback')
-            ->orderBy('updated_at', 'desc')
-            ->get();
-
-        return view('siswa.aspirasi.feedback', compact('aspirasiWithFeedback'));
-    }
+    
 
     public function progressPerbaikan()
     {
@@ -143,5 +132,19 @@ class SiswaController extends Controller
         ->get();
 
     return view('siswa.aspirasi.progress', compact('progress'));
+    }
+
+public function viewFeedback()
+{
+    $siswa = Auth::guard('siswa')->user();
+
+    // Query kolom admin_feedback, variable $feedbackList sesuai view
+    $feedbackList = Aspirasi::with(['kategori', 'inputAspirasi'])
+        ->where('siswa_id', $siswa->id)
+        ->whereNotNull('admin_feedback')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+    return view('siswa.aspirasi.feedback', compact('feedbackList'));
 }
 }
